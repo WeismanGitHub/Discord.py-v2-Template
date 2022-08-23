@@ -8,10 +8,11 @@ import os
 class Bot(commands.Bot):
     async def setup_hook(self):
         guild = discord.Object(id=os.getenv('GUILD_ID'))
-        self.tree.copy_global_to(guild=guild)
-        await self.tree.sync(guild=guild)
-
         await self.load_extension('cogs.cog')
+
+        synced = await self.tree.sync()
+        print(f"synced {len(synced)} commands")
+
 
 intents = discord.Intents.all()
 activity = discord.Game(name='activity')

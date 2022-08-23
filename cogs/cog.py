@@ -1,8 +1,7 @@
 from discord.ext import commands, tasks
-from discord import app_commands
+from discord import app_commands, Interaction
 from discord.utils import get
 from helpers import *
-import discord
 import os
 
 class Cog(commands.Cog):
@@ -15,8 +14,8 @@ class Cog(commands.Cog):
         return
     
     @app_commands.command()
-    async def slash_command(self, interaction: discord.Interaction):
-        await interaction.response.send_message('slash command')
+    async def slash_command(self, interaction: Interaction):
+        return
 
     @commands.command()
     async def command(self, ctx):
